@@ -1,5 +1,6 @@
 package ru.yoursolution.dct.fragments;
 
+import android.net.MailTo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -31,5 +32,6 @@ public class ThirdDeskTopFragment extends Fragment {
         });
         return view;
     }
+
 
 }

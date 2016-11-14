@@ -10,8 +10,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import ru.yoursolution.dct.R;
 import ru.yoursolution.dct.implementations.FirstDesktopPresenterImpl;
 import ru.yoursolution.dct.interfaces.IFirstDesktopPresenter;
@@ -71,20 +69,20 @@ public class FirstDeskTopFragment extends Fragment implements IFirstDestopView {
 
     @Override
     public String getWarningMessage() {
-        return getResources().getString(R.string.noDataWarning);
+        return getResources().getString(R.string.invalidDataWarning);
     }
 
     @Override
     public void setWorkTimeADay(int time) {
-        if(time == -1){
-            tvWorkTimeADay.setText(R.string.noDataWarning);
+        if(time < 0){
+            tvWorkTimeADay.setText(R.string.invalidDataWarning);
         }else tvWorkTimeADay.setText("" + time);
     }
 
     @Override
     public void setActionTime(int time) {
-        if(time == -1){
-            tvActionTime.setText(R.string.noDataWarning);
+        if(time < 0){
+            tvActionTime.setText(R.string.invalidDataWarning);
         }else tvActionTime.setText("" + time);
     }
 

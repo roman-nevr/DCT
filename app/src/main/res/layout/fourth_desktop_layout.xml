@@ -28,20 +28,20 @@
         app:layout_widthPercent="85%"
         app:layout_heightPercent="20%"
         android:layout_below="@+id/textView5"
-        android:id="@+id/textView6"
+        android:id="@+id/tvTimerCounter"
         android:gravity="center"
         android:textSize="40dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@+id/button"
-        android:layout_toStartOf="@+id/button" />
+        android:layout_toLeftOf="@+id/btnPause"
+        android:layout_toStartOf="@+id/btnPause" />
 
     <Button
         android:text="Button"
         app:layout_widthPercent="25%"
         app:layout_heightPercent="20%"
-        android:id="@+id/button"
-        android:layout_alignBottom="@+id/textView6"
+        android:id="@+id/btnPause"
+        android:layout_alignBottom="@+id/tvTimerCounter"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
@@ -49,9 +49,9 @@
         android:text="Button"
         app:layout_widthPercent="100%"
         app:layout_heightPercent="30%"
-        android:id="@+id/button2"
+        android:id="@+id/btnNextElement"
         android:background="@color/myGreen"
-        android:layout_below="@+id/textView6"
+        android:layout_below="@+id/tvTimerCounter"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
@@ -62,9 +62,9 @@
         android:background="@color/red"
         app:layout_widthPercent="80%"
         app:layout_heightPercent="10%"
-        android:layout_below="@+id/button2"
+        android:layout_below="@+id/btnNextElement"
         android:layout_centerHorizontal="true"
-        android:id="@+id/button3" />
+        android:id="@+id/btnIgnore" />
 
 
 </android.support.percent.PercentRelativeLayout>

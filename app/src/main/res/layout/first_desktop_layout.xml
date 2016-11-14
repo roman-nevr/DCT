@@ -28,13 +28,13 @@
         android:hint="@string/etDayStoreText"
         android:id="@+id/etDayStore" />
     <TextView
-        android:text="@string/noDataWarning"
+        android:text="@string/invalidDataWarning"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/FirstDesktopTextViewStyle"
         android:id="@+id/etWorkTimeADay" />
     <TextView
-        android:text="@string/noDataWarning"
+        android:text="@string/invalidDataWarning"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/FirstDesktopTextViewStyle"

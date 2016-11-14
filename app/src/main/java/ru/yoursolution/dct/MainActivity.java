@@ -1,16 +1,21 @@
 package ru.yoursolution.dct;
 
+import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.TabLayout;
 
 import ru.yoursolution.dct.fragments.FirstDeskTopFragment;
 import ru.yoursolution.dct.fragments.SecondDeskTopFragment;
 import ru.yoursolution.dct.fragments.ThirdDeskTopFragment;
+import ru.yoursolution.dct.utils.IntentEmailSender;
+import ru.yoursolution.dct.utils.MailSenderClass;
+import ru.yoursolution.dct.utils.utils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         });
         tabs = (TabLayout) findViewById(R.id.tlTabs);
         tabs.setupWithViewPager(pager);
+
     }
 
     public static class MainAdapter extends FragmentPagerAdapter {

@@ -7,5 +7,5 @@
     <string name="etShiftDurationText">Сколько секунд длится смена</string>
     <string name="etBreakTimeText">Время регламентированных перерывов в смену, сек.</string>
     <string name="etDayStoreText">Объем ежедневного запаса, шт</string>
-    <string name="noDataWarning">Введите данные</string>
+    <string name="invalidDataWarning">Введены некорректные данные</string>
 </resources>

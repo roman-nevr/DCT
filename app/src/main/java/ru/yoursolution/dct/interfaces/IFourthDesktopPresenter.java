@@ -5,10 +5,12 @@ package ru.yoursolution.dct.interfaces;
  */
 
 public interface IFourthDesktopPresenter {
-    void startTimer(int tick);
+    void startTimer();
     void restartTimer();
     void pauseTimer();
     void resumeTimer();
     void nextElement();
     void ignore();
+    void tick();
+    void setView(IFourthDesktopView view);
 }
