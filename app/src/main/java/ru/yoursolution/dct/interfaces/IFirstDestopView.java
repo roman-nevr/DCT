@@ -9,6 +9,7 @@ public interface IFirstDestopView {
     public int getShiftDuration();
     public int getBreakTime();
     public int getDayStore();
+    public String getWarningMessage();
     public void setWorkTimeADay(int time);
     public void setActionTime(int time);
 }

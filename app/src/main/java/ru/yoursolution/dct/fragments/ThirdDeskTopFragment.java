@@ -6,9 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
-import ru.yoursolution.dct.ForthDesktopActivity;
+import ru.yoursolution.dct.FourthDesktopActivity;
 import ru.yoursolution.dct.R;
 
 /**
@@ -27,7 +26,7 @@ public class ThirdDeskTopFragment extends Fragment {
         btnStartTimer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ForthDesktopActivity.start(getActivity());
+                FourthDesktopActivity.start(getActivity());
             }
         });
         return view;

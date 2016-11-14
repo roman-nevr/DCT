@@ -5,6 +5,6 @@ package ru.yoursolution.dct.interfaces;
  */
 
 public interface IFirstDesktopPresenter {
-    public void calculateSecondsADay();
-    public void calculateActionDuration();
+    public void calculateWorkTimeADay();
+    public void calculateActionTime();
 }
