@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/FirstDesktopEditTextStyle"
+        android:hint="@string/etShiftsNumberText"
+        android:id="@+id/etShiftsNumber" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/FirstDesktopEditTextStyle"
+        android:hint="@string/etShiftDurationText"
+        android:id="@+id/etShiftDuration" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/FirstDesktopEditTextStyle"
+        android:hint="@string/etBreakTimeText"
+        android:id="@+id/etBreakTime" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/FirstDesktopEditTextStyle"
+        android:hint="@string/etDayStoreText"
+        android:id="@+id/etDayStore" />
+    <TextView
+        android:text="@string/noDataWarning"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/FirstDesktopTextViewStyle"
+        android:id="@+id/etWorkTimeADay" />
+    <TextView
+        android:text="@string/noDataWarning"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/FirstDesktopTextViewStyle"
+        android:id="@+id/etActionTime" />
+
+
+</LinearLayout>

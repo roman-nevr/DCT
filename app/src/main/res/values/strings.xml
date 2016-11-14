@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">DCT</string>
+
+    <string name="btnStartTimerText">Запуск хронометража</string>
+
+    <string name="etShiftsNumberText">Количество смен</string>
+    <string name="etShiftDurationText">Сколько секунд длится смена</string>
+    <string name="etBreakTimeText">Время регламентированных перерывов в смену, сек.</string>
+    <string name="etDayStoreText">Объем ежедневного запаса, шт</string>
+    <string name="noDataWarning">Введите данные</string>
+</resources>
