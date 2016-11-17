@@ -1,5 +1,7 @@
 package ru.yoursolution.dct.implementations;
 
+import android.view.View;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -63,7 +65,7 @@ public class FourthDesktopActivityPresenterImpl extends AbsAsyncSender implement
     @Override
     public void ignore() {
         restartTimer();
-        sendAsync();
+        //sendAsync();
     }
 
     @Override
@@ -81,5 +83,10 @@ public class FourthDesktopActivityPresenterImpl extends AbsAsyncSender implement
     @Override
     public String getFileName() {
         return "Download/15281.jpg";
+    }
+
+    @Override
+    public View getSnackView() {
+        return null;
     }
 }

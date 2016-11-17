@@ -19,6 +19,7 @@ public abstract class AbsAsyncSender {
         //ProgressDialog WaitingDialog;
         @Override
         protected void onPreExecute() {
+            utils.snackBarLong(getSnackView(), "Email sending started");
         }
 
         @Override
@@ -46,11 +47,11 @@ public abstract class AbsAsyncSender {
             //m.addAttachment("Download/15281.jpg");
             m.addAttachment(getFileName());
 
-            if(m.send() && (snackView != null)) {
-                utils.snackBarLong(snackView, "Email was sent successfully.");
+            if(m.send() && (getSnackView() != null)) {
+                utils.snackBarLong(getSnackView(), "Email was sent successfully.");
                 Log.d("MailApp", "Email was sent successfully.");
             } else {
-                utils.snackBarLong(snackView, "Email was not sent.");
+                utils.snackBarLong(getSnackView(), "Email was not sent.");
                 Log.d("MailApp", "Email was sent successfully.");
             }
         } catch(Exception e) {
@@ -70,6 +71,8 @@ public abstract class AbsAsyncSender {
     }
 
     public abstract String getFileName();
+
+    public abstract View getSnackView();
 
    /* public class EmailData{
         private String[] toArr;

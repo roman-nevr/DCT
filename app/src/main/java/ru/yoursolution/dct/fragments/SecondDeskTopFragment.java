@@ -12,6 +12,7 @@ import android.widget.TextView;
 import ru.yoursolution.dct.R;
 import ru.yoursolution.dct.implementations.SecondDesktopPresenterImpl;
 import ru.yoursolution.dct.interfaces.ISecondDesktopPresenter;
+import ru.yoursolution.dct.interfaces.ISecondDesktopView;
 import ru.yoursolution.dct.utils.ExternalStorageSaver;
 import ru.yoursolution.dct.views.BalancedWorkTable;
 
@@ -19,7 +20,7 @@ import ru.yoursolution.dct.views.BalancedWorkTable;
  * Created by Admin on 14.11.2016.
  */
 
-public class SecondDeskTopFragment extends Fragment {
+public class SecondDeskTopFragment extends Fragment implements ISecondDesktopView{
     BalancedWorkTable table;
     ISecondDesktopPresenter presenter;
 
@@ -29,7 +30,7 @@ public class SecondDeskTopFragment extends Fragment {
         View view = inflater.inflate(R.layout.sample_balanced_work_table, container, false);
 
         table = (BalancedWorkTable) view.findViewById(R.id.balancedWorkTable);
-        presenter = new SecondDesktopPresenterImpl();
+        presenter = new SecondDesktopPresenterImpl(this);
 
         return view;
     }
@@ -61,7 +62,6 @@ public class SecondDeskTopFragment extends Fragment {
 
             bitmap.recycle();
         }
-
-
     }
+
 }

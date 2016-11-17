@@ -2,12 +2,11 @@ package ru.yoursolution.dct.views;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.DashPathEffect;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.Point;
 import android.graphics.Typeface;
 import android.os.Build;
@@ -22,7 +21,6 @@ import java.util.ArrayList;
 import ru.yoursolution.dct.R;
 import ru.yoursolution.dct.model.Element;
 import ru.yoursolution.dct.model.WorkType;
-import ru.yoursolution.dct.utils.ExternalStorageSaver;
 
 /**
  * TODO: document your custom view class.
@@ -130,6 +128,7 @@ public class BalancedWorkTable extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         //super.onDraw(canvas);
+        //fillCanvasWithLines(canvas);
         fillCanvasWithDashedLines(canvas);
         drawAxis(canvas);
         placeAxisText(canvas);
@@ -208,15 +207,36 @@ public class BalancedWorkTable extends View {
         canvas.restore();
     }
 
+    private Path formDashedLine(Path path, float xStart, float yStart, float xStop, float yStop){
+        path.moveTo(xStart, yStart);
+        path.lineTo(xStop, yStop);
+        return path;
+    }
+
+    private void fillCanvasWithDashedLines(Canvas canvas){
+        Paint mPaint = new Paint();
+        mPaint.setStrokeWidth(1.0f);
+        mPaint.setColor(ContextCompat.getColor(getContext(), R.color.grey));
+        mPaint.setStyle(Paint.Style.STROKE);
+        float[] intervals = new float[]{6f, 3f};
+        mPaint.setPathEffect(new DashPathEffect(intervals, 0));
+        int lineNumber = getHeight() / lineSpace;
+        Path path = new Path();
+        for (int lineN = 1; lineN < lineNumber; lineN++){
+            path = formDashedLine(path, 0,  getHeight() - lineN * lineSpace, getWidth(),getHeight() - lineN * lineSpace);
+        }
+        canvas.drawPath(path, mPaint);
+    }
+
     private void drawAxis(Canvas canvas) {
         Paint axisLinePaint = new Paint();
-        axisLinePaint.setStyle(Paint.Style.FILL);
+        axisLinePaint.setStyle(Paint.Style.STROKE);
         axisLinePaint.setStrokeWidth(2.0f);
         canvas.drawLine(0 + lineSpace * 2, getHeight(), 0 + lineSpace * 2,0, axisLinePaint); //vert
         canvas.drawLine(0,getHeight() - lineSpace, getWidth(), getHeight() - lineSpace,axisLinePaint); //horiz
     }
 
-    private void fillCanvasWithDashedLines(Canvas canvas) {
+    private void fillCanvasWithLines(Canvas canvas) {
         Paint mPaint = new Paint();
         mPaint.setStrokeWidth(1.0f);
         mPaint.setColor(ContextCompat.getColor(getContext(), R.color.grey));
