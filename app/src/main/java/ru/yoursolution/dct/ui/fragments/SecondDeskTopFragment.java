@@ -1,4 +1,4 @@
-package ru.yoursolution.dct.fragments;
+package ru.yoursolution.dct.ui.fragments;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import ru.yoursolution.dct.R;
 import ru.yoursolution.dct.implementations.SecondDesktopPresenterImpl;
@@ -57,7 +56,7 @@ public class SecondDeskTopFragment extends Fragment implements ISecondDesktopVie
             canvas = new Canvas(bitmap);
             table.draw(canvas);
 
-            String filename = ExternalStorageSaver.save("test.jpg", bitmap, Bitmap.CompressFormat.JPEG, 100);
+            String filename = ExternalStorageSaver.saveBitmapAs("test.jpg", bitmap, Bitmap.CompressFormat.JPEG, 100);
             presenter.save();
 
             bitmap.recycle();

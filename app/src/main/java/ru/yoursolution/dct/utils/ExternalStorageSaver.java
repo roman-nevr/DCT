@@ -21,7 +21,7 @@ import static ru.yoursolution.dct.utils.utils.LOG_TAG;
 
 public class ExternalStorageSaver{
 
-    public static String save(String name, Bitmap src, Bitmap.CompressFormat format, int quality) throws UnsupportedOperationException {
+    public static String saveBitmapAs(String name, Bitmap src, Bitmap.CompressFormat format, int quality) throws UnsupportedOperationException {
 
         ByteArrayOutputStream os = new ByteArrayOutputStream();
         src.compress(format, quality, os);
@@ -53,6 +53,7 @@ public class ExternalStorageSaver{
         return fileName.toString();
     }
 
+    @Deprecated
     public void test() {
         File fileName = null;
         File sdDir = null;

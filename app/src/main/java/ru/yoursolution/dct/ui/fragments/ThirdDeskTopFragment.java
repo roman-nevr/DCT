@@ -1,6 +1,5 @@
-package ru.yoursolution.dct.fragments;
+package ru.yoursolution.dct.ui.fragments;
 
-import android.net.MailTo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -8,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import ru.yoursolution.dct.FourthDesktopActivity;
+import ru.yoursolution.dct.ui.FourthDesktopActivity;
 import ru.yoursolution.dct.R;
 
 /**

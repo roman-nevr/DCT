@@ -14,6 +14,7 @@ import android.util.DisplayMetrics;
 import android.view.View;
 
 import ru.yoursolution.dct.R;
+import ru.yoursolution.dct.charts.GanttDiagramChart;
 
 /**
  * Created by Admin on 15.11.2016.
@@ -109,27 +110,10 @@ public class GanttDiagramView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        w = getWidth();
-        h = getHeight();
 
-        PointF mPoint1 = new PointF(w/1.2F, h/1.2F);
-        PointF mPoint2 = new PointF(w/24, h/1.2F);
-        Path myPath1 = new Path();
-        Paint paint  = new Paint();
-        paint.setAntiAlias(true);
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeWidth(2.0f);
-        paint.setColor(Color.RED);
-
-        myPath1 = drawCurve(canvas, paint, mPoint1, mPoint2);
-        canvas.drawPath(myPath1, paint);
-        canvas.drawText("111", 0,0, paint);
+        GanttDiagramChart.draw(canvas, getWidth(), getHeight(), metrics.densityDpi);
     }
-    private Path drawCurve(Canvas canvas, Paint paint, PointF mPointa, PointF mPointb) {
 
-        Path myPath = new Path();
-        myPath.moveTo(63*w/64, h/10);
-        myPath.quadTo(mPointa.x, mPointa.y, mPointb.x, mPointb.y);
-        return myPath;
-    }
+
+
 }

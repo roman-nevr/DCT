@@ -19,6 +19,7 @@ import android.view.View;
 import java.util.ArrayList;
 
 import ru.yoursolution.dct.R;
+import ru.yoursolution.dct.charts.BalancedWorkTableChart;
 import ru.yoursolution.dct.model.Element;
 import ru.yoursolution.dct.model.WorkType;
 
@@ -28,9 +29,6 @@ import ru.yoursolution.dct.model.WorkType;
 public class BalancedWorkTable extends View {
     private int lineSize;
 
-    private TextPaint mTextPaint;
-    private float mTextWidth;
-    private float mTextHeight;
     private Point displaySize = new Point(500,300);
     private DisplayMetrics metrics = new DisplayMetrics();
     private int lineSpace;
@@ -129,126 +127,19 @@ public class BalancedWorkTable extends View {
     protected void onDraw(Canvas canvas) {
         //super.onDraw(canvas);
         //fillCanvasWithLines(canvas);
-        fillCanvasWithDashedLines(canvas);
-        drawAxis(canvas);
-        placeAxisText(canvas);
-        drawChart(canvas);
-        drawLabels(canvas);
+
+        BalancedWorkTableChart.draw(canvas, getWidth(), getHeight(), metrics.densityDpi);
+
+
+
         /*Bitmap bitmap = Bitmap.createBitmap(this.getDrawingCache());
-        ExternalStorageSaver.save("test.jpg", bitmap, Bitmap.CompressFormat.JPEG, 100);
+        ExternalStorageSaver.saveBitmapAs("test.jpg", bitmap, Bitmap.CompressFormat.JPEG, 100);
         bitmap.recycle();*/
     }
 
-    private void drawLabels(Canvas canvas) {
 
-    }
 
-    ArrayList<Element> getElements(){
-        ArrayList<Element> elements = new ArrayList<>();
-        elements.add(new Element("Тащить", 10, WorkType.USEFUL_WORK));
-        elements.add(new Element("Курить", 20, WorkType.WASTE_WORK));
-        elements.add(new Element("Катить", 10, WorkType.TRANSIT));
-        elements.add(new Element("Отдыхать", 50, WorkType.WAITING));
-        return elements;
-    }
 
-    ArrayList<Integer> getColors(){
-        ArrayList<Integer> colors = new ArrayList<>();
-        colors.add(Color.GREEN);
-        colors.add(Color.RED);
-        colors.add(Color.GRAY);
-        colors.add(Color.BLUE);
-        return colors;
-    }
-
-    private void drawChart(Canvas canvas) {
-        elements = getElements();
-        colors = getColors();
-        int time =calcWorkTime(elements);
-        float chartHeight = getHeight() - 2 * lineSpace;
-        float oneSecondHeight = chartHeight / time;
-        float elementHeight = getHeight() - lineSpace;
-        for(Element element : elements){
-            elementHeight = drawElement(canvas, element, elementHeight, oneSecondHeight);
-        }
-        //elementHeight = drawElement(canvas, elements.get(0), elementHeight, oneSecondHeight);
-    }
-
-    private float drawElement(Canvas canvas, Element element, float elementHeight, float oneSecondHeight) {
-        Paint mPaint = new Paint();
-        mPaint.setColor(WorkType.getColor(element.getWorkType()));
-        Paint smallTextPaint = new Paint();
-        smallTextPaint.setTextSize(30f);
-        smallTextPaint.setTypeface(Typeface.MONOSPACE);
-        smallTextPaint.setTextAlign(Paint.Align.LEFT);
-        canvas.drawRect(getWidth()*0.2f, elementHeight - oneSecondHeight * element.getDuration(), getWidth()*0.6f, elementHeight, mPaint);
-        canvas.drawText(element.getName()+", "+element.getDuration()+" c", getWidth() * 0.65f, elementHeight - (oneSecondHeight * element.getDuration())/2f, smallTextPaint);
-        return elementHeight - oneSecondHeight * element.getDuration();
-    }
-
-    private int calcWorkTime(ArrayList<Element> elements) {
-        int time = 0;
-        for(Element element : elements){
-            time = time + element.getDuration();
-        }
-        return time;
-    }
-
-    private void placeAxisText(Canvas canvas) {
-        Paint textPaint = new Paint();
-        textPaint.setTextAlign(Paint.Align.CENTER);
-        textPaint.setTypeface(Typeface.SANS_SERIF);
-        textPaint.setTextSize(30f);
-        canvas.drawText("Таблица" , getWidth() / 2, lineSpace, textPaint);
-        canvas.save();
-        canvas.translate(0, getHeight());
-        canvas.rotate(-90);
-        canvas.drawText("время" , getHeight() / 2, lineSpace, textPaint);
-        canvas.restore();
-    }
-
-    private Path formDashedLine(Path path, float xStart, float yStart, float xStop, float yStop){
-        path.moveTo(xStart, yStart);
-        path.lineTo(xStop, yStop);
-        return path;
-    }
-
-    private void fillCanvasWithDashedLines(Canvas canvas){
-        Paint mPaint = new Paint();
-        mPaint.setStrokeWidth(1.0f);
-        mPaint.setColor(ContextCompat.getColor(getContext(), R.color.grey));
-        mPaint.setStyle(Paint.Style.STROKE);
-        float[] intervals = new float[]{6f, 3f};
-        mPaint.setPathEffect(new DashPathEffect(intervals, 0));
-        int lineNumber = getHeight() / lineSpace;
-        Path path = new Path();
-        for (int lineN = 1; lineN < lineNumber; lineN++){
-            path = formDashedLine(path, 0,  getHeight() - lineN * lineSpace, getWidth(),getHeight() - lineN * lineSpace);
-        }
-        canvas.drawPath(path, mPaint);
-    }
-
-    private void drawAxis(Canvas canvas) {
-        Paint axisLinePaint = new Paint();
-        axisLinePaint.setStyle(Paint.Style.STROKE);
-        axisLinePaint.setStrokeWidth(2.0f);
-        canvas.drawLine(0 + lineSpace * 2, getHeight(), 0 + lineSpace * 2,0, axisLinePaint); //vert
-        canvas.drawLine(0,getHeight() - lineSpace, getWidth(), getHeight() - lineSpace,axisLinePaint); //horiz
-    }
-
-    private void fillCanvasWithLines(Canvas canvas) {
-        Paint mPaint = new Paint();
-        mPaint.setStrokeWidth(1.0f);
-        mPaint.setColor(ContextCompat.getColor(getContext(), R.color.grey));
-        mPaint.setStyle(Paint.Style.STROKE);
-        float[] intervals = new float[]{2f, 2f};
-        mPaint.setPathEffect(new DashPathEffect(intervals, 0));
-
-        int lineNumber = getHeight() / lineSpace;
-        for (int lineN = 1; lineN < lineNumber; lineN++){
-            canvas.drawLine(0, getHeight() - lineN * lineSpace, getWidth(),getHeight() - lineN * lineSpace, mPaint);
-        }
-    }
 
 
 }

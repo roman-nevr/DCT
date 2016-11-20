@@ -1,21 +1,21 @@
-package ru.yoursolution.dct;
+package ru.yoursolution.dct.ui;
 
-import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.support.design.widget.TabLayout;
 
-import ru.yoursolution.dct.fragments.FirstDeskTopFragment;
-import ru.yoursolution.dct.fragments.SecondDeskTopFragment;
-import ru.yoursolution.dct.fragments.ThirdDeskTopFragment;
-import ru.yoursolution.dct.utils.IntentEmailSender;
-import ru.yoursolution.dct.utils.MailSenderClass;
-import ru.yoursolution.dct.utils.utils;
+import java.io.IOException;
+
+import jxl.write.WriteException;
+import ru.yoursolution.dct.R;
+import ru.yoursolution.dct.ui.fragments.FirstDeskTopFragment;
+import ru.yoursolution.dct.ui.fragments.SecondDeskTopFragment;
+import ru.yoursolution.dct.ui.fragments.ThirdDeskTopFragment;
+import ru.yoursolution.dct.utils.XLSGenerator;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,7 +42,14 @@ public class MainActivity extends AppCompatActivity {
         });
         tabs = (TabLayout) findViewById(R.id.tlTabs);
         tabs.setupWithViewPager(pager);
-
+        XLSGenerator xlsGenerator = new XLSGenerator();
+        try {
+            xlsGenerator.test();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (WriteException e) {
+            e.printStackTrace();
+        }
     }
 
     public static class MainAdapter extends FragmentPagerAdapter {

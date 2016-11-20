@@ -1,4 +1,4 @@
-package ru.yoursolution.dct;
+package ru.yoursolution.dct.ui;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +12,7 @@ import android.widget.TextView;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import ru.yoursolution.dct.R;
 import ru.yoursolution.dct.implementations.FourthDesktopActivityPresenterImpl;
 import ru.yoursolution.dct.interfaces.IFourthDesktopPresenter;
 import ru.yoursolution.dct.interfaces.IFourthDesktopView;
